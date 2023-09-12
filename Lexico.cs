@@ -77,6 +77,18 @@ namespace Escuela
             {
                 setClasificacion(Tipos.Fin);
             }
+            else if (c=='"')
+            {
+                setClasificacion(Tipos.Cadena);
+                buffer += c;
+                while ((c = (char)archivo.Read()) != '"')
+                {
+                    buffer += c
+                }
+                buffer += c;
+                string token = String.Format("\"{0}\"", buffer);
+                Console.WriteLine(token); 
+            }
             else
             {
                 setClasificacion(Tipos.Caracter);
@@ -88,5 +100,6 @@ namespace Escuela
         {
             return archivo.EndOfStream;
         }
+        public void
     }
 }
